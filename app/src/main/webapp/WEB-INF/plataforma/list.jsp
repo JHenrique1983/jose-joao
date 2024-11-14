@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Plataformas</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -17,7 +18,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/jogo/list">Jogos</a>
@@ -26,7 +27,7 @@
                             <a class="nav-link" href="/categoria/list">Categorias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/plataforma/list">Plataformas</a>
+                            <a class="nav-link active" href="/plataforma/list">Plataformas</a>
                         </li>
                     </ul>
                 </div>
@@ -35,8 +36,35 @@
 
         <!-- Conteúdo Principal -->
         <div class="container mt-5">
-            <h1>Olá Spring!!!</h1>
-            <p>Bem-vindo ao sistema de gerenciamento de jogos!</p>
+            <h1>Plataformas</h1>
+            
+            <!-- Botão para adicionar uma nova plataforma -->
+            <a href="/plataforma/insert" class="btn btn-primary mb-3">Nova Plataforma</a>
+            
+            <!-- Tabela de Listagem de Plataformas -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop para exibir as plataformas -->
+                    <c:forEach var="item" items="${plataformas}">
+                        <tr>
+                            <td>${item.id}</td>
+                            <td>${item.nome}</td>
+                            <td>
+                                <!-- Botões de ação -->
+                                <a href="/plataforma/update?id=${item.id}" class="btn btn-warning">Editar</a>
+                                <a href="/plataforma/delete?id=${item.id}" class="btn btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
 
         <!-- Scripts do Bootstrap -->

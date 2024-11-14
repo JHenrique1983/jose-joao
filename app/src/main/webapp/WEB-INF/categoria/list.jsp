@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Categorias</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -17,13 +18,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/jogo/list">Jogos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/categoria/list">Categorias</a>
+                            <a class="nav-link active" href="/categoria/list">Categorias</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/plataforma/list">Plataformas</a>
@@ -35,8 +36,34 @@
 
         <!-- Conteúdo Principal -->
         <div class="container mt-5">
-            <h1>Olá Spring!!!</h1>
-            <p>Bem-vindo ao sistema de gerenciamento de jogos!</p>
+            <h1>Categorias</h1>
+            <a href="/categoria/insert" class="btn btn-primary mb-3">Nova Categoria</a>
+
+            <!-- Tabela de Listagem de Categorias com Responsividade -->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop para exibir as categorias -->
+                        <c:forEach var="item" items="${categorias}">
+                            <tr>
+                                <td>${item.id}</td>
+                                <td>${item.nome}</td>
+                                <td>
+                                    <a href="/categoria/update?id=${item.id}" class="btn btn-warning">Editar</a>
+                                    <a href="/categoria/delete?id=${item.id}" class="btn btn-danger">Excluir</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Scripts do Bootstrap -->

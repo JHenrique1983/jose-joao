@@ -3,7 +3,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Nova Plataforma</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -17,7 +17,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/jogo/list">Jogos</a>
@@ -26,21 +26,23 @@
                             <a class="nav-link" href="/categoria/list">Categorias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/plataforma/list">Plataformas</a>
+                            <a class="nav-link active" href="/plataforma/list">Plataformas</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <!-- Conteúdo Principal -->
         <div class="container mt-5">
-            <h1>Olá Spring!!!</h1>
-            <p>Bem-vindo ao sistema de gerenciamento de jogos!</p>
+            <h1>Nova Plataforma</h1>
+            <form action="/plataforma/insert" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome" class="form-control" required />
+                </div>
+                <br />
+                <a href="/plataforma/list" class="btn btn-secondary">Voltar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
         </div>
-
-        <!-- Scripts do Bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     </body>
 </html>

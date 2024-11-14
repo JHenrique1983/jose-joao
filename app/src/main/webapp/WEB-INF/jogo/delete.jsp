@@ -3,7 +3,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Remover Jogo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -17,10 +17,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/jogo/list">Jogos</a>
+                            <a class="nav-link active" href="/jogo/list">Jogos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/categoria/list">Categorias</a>
@@ -32,15 +32,21 @@
                 </div>
             </div>
         </nav>
-
-        <!-- Conteúdo Principal -->
         <div class="container mt-5">
-            <h1>Olá Spring!!!</h1>
-            <p>Bem-vindo ao sistema de gerenciamento de jogos!</p>
+            <h1>Remover Jogo</h1>
+            
+            <!-- Usando a tag c:out para evitar problemas de escape de caracteres -->
+            <p>Tem certeza que deseja remover o jogo <c:out value="${jogo.titulo}" />?</p>
+            
+            <form action="/jogo/delete" method="post">
+                <!-- Campo oculto para passar o ID do jogo -->
+                <input type="hidden" name="id" value="${jogo.id}" />
+                <br />
+                
+                <!-- Botões de navegação -->
+                <a href="/jogo/list" class="btn btn-primary">Voltar</a>
+                <button type="submit" class="btn btn-danger">Excluir</button>
+            </form>
         </div>
-
-        <!-- Scripts do Bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     </body>
 </html>

@@ -3,7 +3,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Editar Categoria</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -17,13 +17,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/jogo/list">Jogos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/categoria/list">Categorias</a>
+                            <a class="nav-link active" href="/categoria/list">Categorias</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/plataforma/list">Plataformas</a>
@@ -35,8 +35,23 @@
 
         <!-- Conteúdo Principal -->
         <div class="container mt-5">
-            <h1>Olá Spring!!!</h1>
-            <p>Bem-vindo ao sistema de gerenciamento de jogos!</p>
+            <h1>Editar Categoria</h1>
+            <form action="/categoria/update" method="post">
+                <!-- Campo oculto para o ID da categoria -->
+                <input type="hidden" name="id" value="${categoria.id}" />
+
+                <!-- Campo para editar o nome da categoria -->
+                <div class="form-group mb-3">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" class="form-control" value="${categoria.nome}" required />
+                </div>
+
+                <!-- Botões de ação -->
+                <div class="d-flex justify-content-between">
+                    <a href="/categoria/list" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                </div>
+            </form>
         </div>
 
         <!-- Scripts do Bootstrap -->
